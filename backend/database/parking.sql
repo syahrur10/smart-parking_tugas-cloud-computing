@@ -1,15 +1,16 @@
 CREATE TABLE users (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    nama VARCHAR(100),
-    email VARCHAR(100) UNIQUE,
-    password VARCHAR(255)
+id INT AUTO_INCREMENT PRIMARY KEY,
+nama VARCHAR(100),
+email VARCHAR(100) UNIQUE,
+password VARCHAR(255)
 );
 
 CREATE TABLE parking_slots (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    slot_name VARCHAR(10),
-    status ENUM('kosong','penuh') DEFAULT 'kosong',
-    booked_by INT NULL
+id INT AUTO_INCREMENT PRIMARY KEY,
+slot_name VARCHAR(10),
+status ENUM('kosong','penuh') DEFAULT 'kosong',
+booked_by INT NULL,
+booked_at TIMESTAMP NULL
 );
 
 INSERT INTO parking_slots (slot_name) VALUES
