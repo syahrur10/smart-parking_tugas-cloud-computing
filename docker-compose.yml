@@ -41,7 +41,7 @@ services:
       - "4566:4566"
 
     environment:
-      - SERVICES=s3
+      - SERVICES=s3,dynamodb,sqs
       - DEBUG=1
       - AWS_DEFAULT_REGION=us-east-1
 
