@@ -1,9 +1,9 @@
 <?php
 
 $conn = mysqli_connect(
-    "host.docker.internal",
+    "mysql",
     "root",
-    "",
+    "root",
     "smart_parking",
     3306
 );

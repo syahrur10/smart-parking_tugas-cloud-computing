@@ -1,7 +1,52 @@
-version: '3'
-
 services:
+
   app:
     build: .
+    container_name: smart-parking-app
+
     ports:
       - "8080:80"
+
+    depends_on:
+      - mysql
+      - localstack
+
+    restart: always
+
+  mysql:
+    image: mysql:8.0
+
+    container_name: smart-parking-mysql
+
+    restart: always
+
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: smart_parking
+
+    ports:
+      - "3307:3306"
+
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  localstack:
+    image: localstack/localstack:3.0
+
+    container_name: smart-parking-localstack
+
+    restart: always
+
+    ports:
+      - "4566:4566"
+
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+      - AWS_DEFAULT_REGION=us-east-1
+
+    volumes:
+      - ./localstack:/var/lib/localstack
+
+volumes:
+  mysql_data:
