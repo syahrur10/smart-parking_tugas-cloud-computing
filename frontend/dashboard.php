@@ -29,6 +29,7 @@ $totalPenuh = mysqli_num_rows($penuh);
 
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
 
 <meta charset="UTF-8">
@@ -36,7 +37,9 @@ $totalPenuh = mysqli_num_rows($penuh);
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-<title>Dashboard Smart Parking</title>
+<title>
+Dashboard Smart Parking
+</title>
 
 <link rel="stylesheet"
 href="assets/css/style.css">
@@ -53,28 +56,32 @@ href="assets/css/style.css">
 
 <div class="navbar">
 
-<div>
+    <div>
 
-<h2>
-Smart Parking
-</h2>
+        <h2>
+            Smart Parking
+        </h2>
 
-<p>
-Selamat datang,
-<b><?= $_SESSION['user']['nama']; ?></b>
+        <p>
 
-<br>
+            Selamat datang,
+            <b><?= $_SESSION['user']['nama']; ?></b>
 
-Kelola reservasi slot parkir Anda dengan cepat,
-mudah, dan modern.
-</p>
+            <br>
 
-</div>
+            Kelola reservasi slot parkir Anda
+            dengan cepat, modern, dan profesional.
 
-<a class="logout-btn"
-href="auth/logout.php">
-Logout
-</a>
+        </p>
+
+    </div>
+
+    <a class="logout-btn"
+    href="auth/logout.php">
+
+        Logout
+
+    </a>
 
 </div>
 
@@ -82,41 +89,53 @@ Logout
 
 <div class="stats-grid">
 
-<div class="stats-card">
+    <div class="stats-card total-slot">
 
-<h3>
-Total Slot
-</h3>
+        <h3>
+            Total Slot
+        </h3>
 
-<h1>
-<?= $total; ?>
-</h1>
+        <h1>
+            <?= $total; ?>
+        </h1>
 
-</div>
+        <p>
+            Total seluruh slot parkir
+        </p>
 
-<div class="stats-card">
+    </div>
 
-<h3>
-Slot Tersedia
-</h3>
+    <div class="stats-card slot-available">
 
-<h1>
-<?= $totalKosong; ?>
-</h1>
+        <h3>
+            Slot Tersedia
+        </h3>
 
-</div>
+        <h1>
+            <?= $totalKosong; ?>
+        </h1>
 
-<div class="stats-card">
+        <p>
+            Slot siap digunakan
+        </p>
 
-<h3>
-Slot Terisi
-</h3>
+    </div>
 
-<h1>
-<?= $totalPenuh; ?>
-</h1>
+    <div class="stats-card slot-full">
 
-</div>
+        <h3>
+            Slot Terisi
+        </h3>
+
+        <h1>
+            <?= $totalPenuh; ?>
+        </h1>
+
+        <p>
+            Slot sedang digunakan
+        </p>
+
+    </div>
 
 </div>
 
@@ -126,47 +145,47 @@ Slot Terisi
 
 <?php while($slot = mysqli_fetch_assoc($data)){ ?>
 
-<div class="slot-card">
+<div class="slot-card <?= $slot['status']=='penuh' ? 'full' : '' ?>">
 
-<h2>
-<?= $slot['slot_name']; ?>
-</h2>
+    <h2>
+        <?= $slot['slot_name']; ?>
+    </h2>
 
-<?php if($slot['status'] == 'kosong'){ ?>
+    <?php if($slot['status'] == 'kosong'){ ?>
 
-<p class="status-kosong">
-🟢 Slot Tersedia
-</p>
+        <p class="status-kosong">
+            Slot Tersedia
+        </p>
 
-<form action="process_booking.php"
-method="POST">
+        <form action="process_booking.php"
+        method="POST">
 
-<input type="hidden"
-name="slot_id"
-value="<?= $slot['id']; ?>">
+            <input type="hidden"
+            name="slot_id"
+            value="<?= $slot['id']; ?>">
 
-<button class="booking-btn"
-name="booking">
+            <button class="booking-btn"
+            name="booking">
 
-Booking Sekarang
+                Booking Sekarang
 
-</button>
+            </button>
 
-</form>
+        </form>
 
-<?php } else { ?>
+    <?php } else { ?>
 
-<p class="status-penuh">
-🔴 Slot Terisi
-</p>
+        <p class="status-penuh">
+            Slot Terisi
+        </p>
 
-<button class="full-btn">
+        <button class="full-btn">
 
-Sudah Penuh
+            Sudah Penuh
 
-</button>
+        </button>
 
-<?php } ?>
+    <?php } ?>
 
 </div>
 
