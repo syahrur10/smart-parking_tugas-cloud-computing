@@ -29,6 +29,6 @@ done
 
 echo "Create SQS Queue..."
 awslocal sqs create-queue \
-    --queue-name parking-notification
+    --queue-name parking_notifications
 
 echo "AWS Resources Ready!"
