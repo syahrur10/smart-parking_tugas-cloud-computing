@@ -26,7 +26,7 @@ Aplikasi web manajemen parkir yang dikembangkan sebagai proyek akhir mata kuliah
 
 - Registrasi dan login pengguna dengan manajemen sesi PHP
 - Dashboard dengan ringkasan statistik parkir dan sapaan berdasarkan waktu
-- Tampilan peta 160 slot parkir (A1 sampai D4) dengan status real-time
+- Tampilan peta 16 slot parkir (A1 sampai D4) dengan status real-time
 - Reservasi slot langsung dari halaman web
 - Upload foto kendaraan beserta nomor plat, tersimpan di AWS S3
 - Sistem notifikasi via AWS SQS setiap ada reservasi masuk
