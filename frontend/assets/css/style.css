@@ -698,3 +698,128 @@ button:hover{
         font-size:38px;
     }
 }
+
+.toast{
+
+    position:fixed;
+
+    top:30px;
+    right:30px;
+
+    min-width:340px;
+    max-width:420px;
+
+    padding:18px 22px;
+
+    border-radius:18px;
+
+    color:white;
+
+    font-size:15px;
+    font-weight:600;
+
+    line-height:1.7;
+
+    backdrop-filter:blur(14px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+    0 12px 30px rgba(0,0,0,.35);
+
+    z-index:99999;
+
+    animation:
+    toastSlide .5s ease,
+    toastHide .5s ease 4.5s forwards;
+}
+
+.toast-success{
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(16,185,129,.96),
+        rgba(5,150,105,.94)
+    );
+}
+
+.toast-error{
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(239,68,68,.96),
+        rgba(220,38,38,.94)
+    );
+}
+
+.toast-info{
+
+    background:
+    linear-gradient(
+        135deg,
+        rgba(59,130,246,.96),
+        rgba(29,78,216,.94)
+    );
+}
+
+.toast-title{
+
+    font-size:16px;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+}
+
+.toast-message{
+
+    opacity:.95;
+
+    font-size:14px;
+
+    color:#f1f5f9;
+}
+
+@keyframes toastSlide{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateX(120px);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateX(0);
+    }
+}
+
+@keyframes toastHide{
+
+    to{
+
+        opacity:0;
+
+        transform:
+        translateX(120px);
+    }
+}
+
+@media(max-width:768px){
+
+    .toast{
+
+        right:20px;
+        left:20px;
+
+        min-width:auto;
+        max-width:none;
+    }
+}

@@ -2,16 +2,20 @@ services:
 
   app:
     build: .
+
     container_name: smart-parking-app
 
-    ports:
-      - "8080:80"
+    restart: always
 
     depends_on:
       - mysql
       - localstack
 
-    restart: always
+    ports:
+      - "8080:80"
+
+    volumes:
+      - ./:/var/www/html
 
   mysql:
     image: mysql:8.0
@@ -47,6 +51,7 @@ services:
 
     volumes:
       - ./localstack:/var/lib/localstack
+      - ./localstack/init:/etc/localstack/init/ready.d
 
 volumes:
   mysql_data:
